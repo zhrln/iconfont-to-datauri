@@ -3,11 +3,19 @@
  */
 ;(function(){
 
+    function getCurrentTab(callback){
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            var current = tabs[0];
+            callback && callback(current);
+        });
+    }
+
     function init(){
         document.addEventListener('DOMContentLoaded', function(){
-            chrome.tabs.getCurrent(function(tab){
-                chrome.runtime.sendMessage(tab.id, { action: "GetBaiduKeyWord" }, function (response) {
-                    alert(response.kw);
+            getCurrentTab(function(tab){
+                debugger
+                chrome.runtime.sendMessage(tab.id, { action: "getProjectId" }, function (response) {
+                    alert(response.pid);
                 });
             });
         });
