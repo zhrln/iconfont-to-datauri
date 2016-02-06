@@ -3,14 +3,50 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+        <script src="jquery/jquery.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="template.js"></script>
         <script src="content.js"></script>
         <style>
             body {
-                width: 100px;
+                width: 770px;
+            }
+            .txa-uri {
+                resize: none;
             }
         </style>
+        <script type="text/x-template" id="tpl-font-list">
+            <div class="panel-body">
+                <ul class="nav nav-tabs" role="tablist">
+                <% tabs.forEach(function(n){ %>
+                <li role="presentation" class="<%=(n.default?'active':'')%>"><a href="#<%=n.tabId%>" aria-controls="<%=n.tabId%>" role="tab" data-toggle="tab"><%=n.tabLabel%></a></li>
+                <% }); %>
+                </ul>
+                <div class="tab-content">
+                    <% tabs.forEach(function(n){ %>
+                    <div role="tabpanel" class="tab-pane<%=(n.default?' active':'')%>" id="<%=n.tabId%>">
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-2">
+                                        <button type="submit" class="btn btn-primary btn-block">DataURI</button>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="ipt-url-<%=n.tabId%>" value="<%=fonts[n.keyName]%>" readonly>
+                                    </div>
+                                </div>
+                            </form>
+                            <textarea class="form-control txa-uri" rows="15" id="txa-uri-<%=n.tabId%>"></textarea>
+                        </div>
+                    </div>
+                    <% });%>
+                </div>
+            </div>
+        </script>
     </head>
     <body>
-
+        <div id="font-list"></div>
     </body>
 </html>

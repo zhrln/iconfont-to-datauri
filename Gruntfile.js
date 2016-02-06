@@ -19,6 +19,24 @@ module.exports = function (grunt) {
                         ],
                         dest: 'build/',
                         filter: 'isFile'
+                    },{
+                        expand: true,
+                        cwd: 'bower_components/bootstrap/dist',
+                        src: [
+                            '**/css/*.min.*',
+                            '!**/css/*.map',
+                            '**/js/*.min.*',
+                            '**/fonts/*'
+                        ],
+                        dest: 'build/bootstrap'
+                    },{
+                        expand: true,
+                        cwd: 'bower_components/jquery/dist',
+                        src: [
+                            '**/*.min.*',
+                            '!**/*.map'
+                        ],
+                        dest: 'build/jquery'
                     }
                 ]
             }

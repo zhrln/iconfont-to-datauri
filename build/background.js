@@ -1,0 +1,1 @@
+function getUrlObj(a){var b=document.createElement("a");return b.href=a,b}function checkForValidUrl(a,b,c){var d=getUrlObj(c.url);-1!=d.host.indexOf("iconfont.cn")&&"/users/project"==d.pathname&&chrome.pageAction.show(a)}chrome.tabs.onUpdated.addListener(checkForValidUrl);

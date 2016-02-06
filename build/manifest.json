@@ -2,6 +2,7 @@
   "name": "iconfont to datauri",
   "version": "1.0",
   "manifest_version": 2,
+  "background": { "scripts": ["background.js"] },
   "icons": {
     "16": "icon16.png",
     "32": "icon32.png",
@@ -9,9 +10,19 @@
     "128": "icon128.png"
   },
   "description": "iconfont to datauri",
-  "browser_action": {
-    "default_icon": "icon16.png",
+  "page_action": {
+    "default_icon": "icon48.png",
+    "default_title": "Do action",
     "default_popup": "index.html"
   },
-  "permissions": ["tabs"]
+  "content_scripts": [
+    {
+      "matches": ["http://*.iconfont.cn/*"],
+      "js": ["contentscript.js"]
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

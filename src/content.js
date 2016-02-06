@@ -1,7 +1,37 @@
 /**
  * Created by yanjing on 2/4/16.
  */
-;(function(){
+$(function(){
+
+    var tabMap = [
+        {
+            tabId: 'ttf',
+            tabLabel: 'TTF File',
+            keyName: 'ttf_file',
+            default: true
+        },{
+            tabId: 'svg',
+            tabLabel: 'SVG File',
+            keyName: 'svg_file'
+        },{
+            tabId: 'eot',
+            tabLabel: 'EOT File',
+            keyName: 'eot_file'
+        },{
+            tabId: 'woff',
+            tabLabel: 'WOFF File',
+            keyName: 'woff_file'
+        }
+    ];
+
+    function renderFontList(fonts){
+        var fn = new Tpl($('#tpl-font-list').html()).template();
+        var tpl = fn({
+            fonts:fonts,
+            tabs: tabMap
+        });
+        $('#font-list').html(tpl);
+    }
 
     function getCurrentTab(callback){
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -11,15 +41,17 @@
     }
 
     function init(){
-        document.addEventListener('DOMContentLoaded', function(){
-            getCurrentTab(function(tab){
-                debugger
-                chrome.runtime.sendMessage(tab.id, { action: "getProjectId" }, function (response) {
-                    alert(response.pid);
-                });
+        getCurrentTab(function(tab){
+            chrome.tabs.sendMessage(tab.id, { action: "getProjectData" }, function(data){
+                if(data && data.font){
+                    renderFontList(data.font);
+                }
             });
         });
     }
-    init();
 
-}());
+    if(chrome && chrome['tabs']){
+        init();
+    }
+
+});

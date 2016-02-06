@@ -2,7 +2,9 @@
   "name": "iconfont-to-datauri",
   "version": "1.0.0",
   "description": "转换 iconfont 的字体为 datauri",
-  "dependencies": {},
+  "dependencies": {
+
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
