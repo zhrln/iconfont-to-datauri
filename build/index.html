@@ -15,6 +15,7 @@
             }
             .txa-uri {
                 resize: none;
+                word-break: break-all;
             }
         </style>
         <script type="text/x-template" id="tpl-font-list">
@@ -31,14 +32,14 @@
                             <form class="form-horizontal">
                                 <div class="form-group">
                                     <div class="col-sm-2">
-                                        <button type="submit" class="btn btn-primary btn-block">DataURI</button>
+                                        <button type="button" class="btn btn-primary btn-block datauri-btn" data-ext="<%=n.tabId%>" data-for="<%=fonts[n.keyName]%>">DataURI</button>
                                     </div>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="ipt-url-<%=n.tabId%>" value="<%=fonts[n.keyName]%>" readonly>
                                     </div>
                                 </div>
                             </form>
-                            <textarea class="form-control txa-uri" rows="15" id="txa-uri-<%=n.tabId%>"></textarea>
+                            <textarea class="form-control txa-uri" rows="15" id="txa-uri-<%=n.tabId%>" spellcheck="false"></textarea>
                         </div>
                     </div>
                     <% });%>
@@ -47,6 +48,10 @@
         </script>
     </head>
     <body>
-        <div id="font-list"></div>
+        <div id="font-list">
+            <div class="panel-body">
+                载入中...
+            </div>
+        </div>
     </body>
 </html>

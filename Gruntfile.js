@@ -39,6 +39,16 @@ module.exports = function (grunt) {
                         dest: 'build/jquery'
                     }
                 ]
+            },
+            debug: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/',
+                        src: ['**/*.js'],
+                        dest: 'build/'
+                    }
+                ]
             }
         },
         uglify: {
@@ -81,4 +91,5 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', ['clean', 'copy', 'uglify', 'cssmin', 'compress']);
+    grunt.registerTask('debug', ['clean', 'copy', 'copy:debug', 'cssmin', 'compress']);
 };
