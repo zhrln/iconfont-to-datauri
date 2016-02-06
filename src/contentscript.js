@@ -4,7 +4,7 @@
 
 (function(){
 
-    var queryString = function(){
+    function queryString(){
         var query_string = {};
         var query = window.location.search.substring(1);
         var vars = query.split("&");
@@ -20,10 +20,10 @@
             }
         }
         return query_string;
-    }();
+    }
 
     function getPid(){
-        var pid = queryString['pid'] ? queryString['pid'] : document.querySelector(".left .selected").dataset['pid'];
+        var pid = queryString().pid ? queryString().pid : document.querySelector(".left .selected").dataset['pid'];
         return pid;
     }
 
