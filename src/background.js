@@ -6,7 +6,7 @@ function getUrlObj(url){
 
 function checkForValidUrl(tabId, changeInfo, tab) {
     var url = getUrlObj(tab.url);
-    if(url.host.indexOf('iconfont.cn') != -1 && url.pathname == '/users/project'){
+    if(url.host.indexOf('iconfont.cn') != -1 && (url.pathname == '/users/project' || url.pathname == '/showProject')){
         chrome.pageAction.show(tabId);
     }
 }
