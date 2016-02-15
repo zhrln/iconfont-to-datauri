@@ -1,0 +1,11 @@
+{
+  "name": "iconfont-to-datauri",
+  "version": "1.0.0",
+  "authors": [
+    "zhangrui"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "bootstrap": "^3.3.6"
+  }
+}

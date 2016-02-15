@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "转换 iconfont 的字体为 datauri",
   "dependencies": {
-
   },
   "devDependencies": {
     "grunt": "^0.4.5",
