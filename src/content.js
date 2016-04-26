@@ -110,7 +110,6 @@ $(function(){
         $fl.on('click', '.datauri-btn', function(){
             var $this = $(this);
             var $textarea = $this.closest('.panel-body').find('.txa-uri');
-            debugger
             getFileAsBase64($this.data('for'), function(base64){
                 $textarea.val(buildDataURI(mimeMap[$this.data('ext')], base64));
             });
