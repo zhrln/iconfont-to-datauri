@@ -41,8 +41,7 @@
             } else {
                 return Promise.reject(new Error(response.statusText))
             }
-        })
-        .then(function(response){
+        }).then(function(response){
             success(response)
         }).catch(function(e){
             fail(e);
